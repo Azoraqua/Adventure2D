@@ -87,6 +87,14 @@ namespace Adventure2D
             return kbState;
         }
 
+        public MouseState GetMouse()
+        {
+            var mState = Mouse.GetState();
+            _mouseState = mState;
+
+            return mState;
+        }
+
         public Vector2 GetCenter()
         {
             return new Vector2(

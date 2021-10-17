@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
+// ReSharper disable once CheckNamespace
 namespace Adventure2D.Core
 {
     public abstract class GameObject
