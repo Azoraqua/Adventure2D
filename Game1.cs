@@ -47,19 +47,13 @@ namespace Adventure2D
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-                Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            var dt = (float) gameTime.ElapsedGameTime.TotalSeconds;
-            var kbState = Keyboard.GetState();
-
-            // TODO: Handle key-presses.
+            // TODO: Handle generic key-presses.
 
             _player.Update(gameTime);
-
             // _camera.Update(gameTime);
-            _keyboardState = kbState;
 
             base.Update(gameTime);
         }
@@ -70,9 +64,6 @@ namespace Adventure2D
 
             // _spriteBatch.Begin(_camera);
             _spriteBatch.Begin();
-            _spriteBatch.DrawString(_gameFont,
-                $"FPS: {(1 / gameTime.ElapsedGameTime.TotalSeconds).ToString().Substring(0, 5)}", new Vector2(3, 3),
-                Color.White);
             _player.Draw(_spriteBatch, gameTime);
             _spriteBatch.End();
 

@@ -4,12 +4,14 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Adventure2D.Entity
 {
-    public class Player : Entity
+    public class Player : LivingEntity
     {
         public Player(Game1 game) : base(game)
         {
             Position = game.GetCenter();
             Direction = Direction.Down;
+            Speed = 125f;
+            Health = 100f;
         }
 
         public override void LoadContent()
@@ -19,31 +21,32 @@ namespace Adventure2D.Entity
 
         public override void Update(GameTime time)
         {
-            var speed = 100;
             var dt = (float) time.ElapsedGameTime.TotalSeconds;
             var kbState = Game.GetKeyboard();
-            
+
+            Speed = kbState.IsKeyDown(Keys.LeftShift) ? 250f : 125f;
+
             if (kbState.IsKeyDown(Keys.W))
             {
-                Position.Y -= (speed * dt);
+                Position.Y -= (Speed * dt);
                 Direction = Direction.Up;
             }
-            
+
             if (kbState.IsKeyDown(Keys.S))
             {
-                Position.Y += (speed * dt);
+                Position.Y += (Speed * dt);
                 Direction = Direction.Down;
             }
-            
+
             if (kbState.IsKeyDown(Keys.A))
             {
-                Position.X -= (speed * dt);
+                Position.X -= (Speed * dt);
                 Direction = Direction.Left;
             }
-            
+
             if (kbState.IsKeyDown(Keys.D))
             {
-                Position.X += (speed * dt);
+                Position.X += (Speed * dt);
                 Direction = Direction.Right;
             }
         }
