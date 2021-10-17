@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Adventure2D.Entity
+namespace Adventure2D.Core.Entities
 {
     public class Player : LivingEntity
     {

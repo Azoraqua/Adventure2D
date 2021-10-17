@@ -1,6 +1,5 @@
-﻿using System.Reflection;
-using Adventure2D.Core.Controller;
-using Adventure2D.Entity;
+﻿using Adventure2D.Core.Controllers;
+using Adventure2D.Core.Entities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -69,7 +68,7 @@ namespace Adventure2D
             // TODO: Handle generic key-presses.
 
             GameController.Update();
-            Player.Update(gameTime);
+            // Player.Update(gameTime);
             // _camera.Update(gameTime);
 
             base.Update(gameTime);
@@ -80,7 +79,7 @@ namespace Adventure2D
             // _spriteBatch.Begin(_camera);
             GraphicsController.Begin();
             GraphicsController.Update();
-            Player.Draw(gameTime);
+            // Player.Draw(gameTime);
             GraphicsController.End();
             
             base.Draw(gameTime);

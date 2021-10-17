@@ -1,4 +1,4 @@
-﻿namespace Adventure2D.Core.Controller
+﻿namespace Adventure2D.Core.Controllers
 {
     public abstract class Controller
     {

@@ -1,7 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Adventure2D.Core.Scenes;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace Adventure2D.Core.Controller
+namespace Adventure2D.Core.Controllers
 {
     public sealed class GameController : Controller
     {
@@ -38,6 +39,14 @@ namespace Adventure2D.Core.Controller
         {
             // GetKeyboard();
             // GetMouse();
+
+            if (GetKeyboard().IsKeyDown(Keys.D1) && Game.GraphicsController.CurrentScene.Name != "Menu")
+            {
+                Game.GraphicsController.ChangeScene("Menu");
+            } else if (GetKeyboard().IsKeyDown(Keys.D2) && Game.GraphicsController.CurrentScene.Name != "Game")
+            {
+                Game.GraphicsController.ChangeScene("Game");
+            }
         }
     }
 }

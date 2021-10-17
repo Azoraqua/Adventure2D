@@ -1,8 +1,7 @@
-﻿using Adventure2D.Core;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Adventure2D.Entity
+namespace Adventure2D.Core.Entities
 {
     public enum Direction
     {

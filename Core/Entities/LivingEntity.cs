@@ -1,4 +1,4 @@
-﻿namespace Adventure2D.Entity
+﻿namespace Adventure2D.Core.Entities
 {
     public abstract class LivingEntity : Entity
     {
