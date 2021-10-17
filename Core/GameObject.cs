@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-// ReSharper disable once CheckNamespace
 namespace Adventure2D.Core
 {
     public abstract class GameObject
@@ -17,6 +16,6 @@ namespace Adventure2D.Core
 
         public abstract void Update(GameTime time);
 
-        public abstract void Draw(SpriteBatch batch, GameTime time);
+        public abstract void Draw(GameTime time);
     }
 }

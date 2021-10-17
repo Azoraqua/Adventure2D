@@ -1,4 +1,6 @@
-﻿using Adventure2D.Entity;
+﻿using System.Reflection;
+using Adventure2D.Core.Controller;
+using Adventure2D.Entity;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -7,30 +9,46 @@ namespace Adventure2D
 {
     public class Game1 : Game
     {
-        private readonly GraphicsDeviceManager _graphics;
-
-        private SpriteBatch _spriteBatch;
+        /*
+         * TODO:
+         *  - Fix startup crash, -532,462,766
+         */
+        
+        public readonly GraphicsDeviceManager Graphics;
+        public GraphicsController GraphicsController;
+        public GameController GameController;
+        
         // private Camera _camera;
 
-        private SpriteFont _gameFont;
-        private Player _player;
+        public SpriteFont GameFont
+        {
+            get;
+            private set;
+        }
 
-        private KeyboardState _keyboardState;
-        private MouseState _mouseState;
+        public Player Player
+        {
+            get;
+            private set;
+        }
+        
 
         public Game1()
         {
-            _graphics = new GraphicsDeviceManager(this);
+            Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
 
         protected override void Initialize()
         {
-            _graphics.PreferredBackBufferWidth = 1280;
-            _graphics.PreferredBackBufferHeight = 720;
-            _graphics.ApplyChanges();
+            GameController = new GameController(this);
+            GraphicsController = new GraphicsController(this);
 
-            _player = new Player(this);
+            Graphics.PreferredBackBufferWidth = 1280;
+            Graphics.PreferredBackBufferHeight = 720;
+            Graphics.ApplyChanges();
+
+            Player = new Player(this);
             // _camera = new Camera(GraphicsDevice);
 
             base.Initialize();
@@ -38,21 +56,20 @@ namespace Adventure2D
 
         protected override void LoadContent()
         {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            _gameFont = Content.Load<SpriteFont>("Fonts/Game");
-            _player.LoadContent();
+            GameFont = Content.Load<SpriteFont>("Fonts/Game");
+            Player.LoadContent();
             // _camera.LoadContent();
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (GameController.GetKeyboard().IsKeyDown(Keys.Escape))
                 Exit();
 
             // TODO: Handle generic key-presses.
 
-            _player.Update(gameTime);
+            GameController.Update();
+            Player.Update(gameTime);
             // _camera.Update(gameTime);
 
             base.Update(gameTime);
@@ -60,38 +77,13 @@ namespace Adventure2D
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
             // _spriteBatch.Begin(_camera);
-            _spriteBatch.Begin();
-            _player.Draw(_spriteBatch, gameTime);
-            _spriteBatch.End();
-
+            GraphicsController.Begin();
+            GraphicsController.Update();
+            Player.Draw(gameTime);
+            GraphicsController.End();
+            
             base.Draw(gameTime);
-        }
-
-        public KeyboardState GetKeyboard()
-        {
-            var kbState = Keyboard.GetState();
-            _keyboardState = kbState;
-
-            return kbState;
-        }
-
-        public MouseState GetMouse()
-        {
-            var mState = Mouse.GetState();
-            _mouseState = mState;
-
-            return mState;
-        }
-
-        public Vector2 GetCenter()
-        {
-            return new Vector2(
-                (float) (_graphics.PreferredBackBufferWidth / 2.0),
-                (float) (_graphics.PreferredBackBufferHeight / 2.0)
-            );
         }
     }
 }

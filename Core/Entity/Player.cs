@@ -8,7 +8,7 @@ namespace Adventure2D.Entity
     {
         public Player(Game1 game) : base(game)
         {
-            Position = game.GetCenter();
+            Position = game.GameController.Center;
             Direction = Direction.Down;
             Speed = 125f;
             Health = 100f;
@@ -22,9 +22,7 @@ namespace Adventure2D.Entity
         public override void Update(GameTime time)
         {
             var dt = (float) time.ElapsedGameTime.TotalSeconds;
-            var kbState = Game.GetKeyboard();
-
-            Speed = kbState.IsKeyDown(Keys.LeftShift) ? 250f : 125f;
+            var kbState = Game.GameController.GetKeyboard();
 
             if (kbState.IsKeyDown(Keys.W))
             {
@@ -51,9 +49,9 @@ namespace Adventure2D.Entity
             }
         }
 
-        public override void Draw(SpriteBatch batch, GameTime time)
+        public override void Draw(GameTime time)
         {
-            batch.Draw(Sprite, new Vector2(Position.X - Sprite.Width, Position.Y - Sprite.Height), Color.White);
+            Game.GraphicsController.Draw(Sprite, Vector2.Subtract(Position, new Vector2(Sprite.Width, Sprite.Height)));
         }
     }
 }
