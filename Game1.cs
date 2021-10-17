@@ -8,11 +8,6 @@ namespace Adventure2D
 {
     public class Game1 : Game
     {
-        /*
-         * TODO:
-         *  - Fix startup crash, -532,462,766
-         */
-        
         public readonly GraphicsDeviceManager Graphics;
         public GraphicsController GraphicsController;
         public GameController GameController;
