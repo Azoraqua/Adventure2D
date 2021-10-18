@@ -1,3 +1,3 @@
-Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"D:/Development/Adventure2D/Content/Fonts/Game.spritefont","D:/Development/Adventure2D/Content/bin/DesktopGL/Fonts/Game.xnb","FontDescriptionProcessor","SpriteFontContent",2028,37922,0,160594
-"D:/Development/Adventure2D/Content/Textures/Entity/Player.png","D:/Development/Adventure2D/Content/bin/DesktopGL/Textures/Entity/Player.xnb","TextureProcessor","Texture2DContent",132,1109,0,0093936
+version https://git-lfs.github.com/spec/v1
+oid sha256:de3c1a61c9a1d5920135aec6230f1080545c2dca6d7bac2acc132ce01d4d8371
+size 490

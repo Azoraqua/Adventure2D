@@ -1,22 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Development/Adventure2D/Content/Fonts/Game.spritefont</SourceFile>
-  <SourceTime>2021-10-18T14:52:40.7761893+02:00</SourceTime>
-  <DestFile>D:/Development/Adventure2D/Content/bin/DesktopGL/Content/Fonts/Game.xnb</DestFile>
-  <DestTime>2021-10-18T15:34:42.7765911+02:00</DestTime>
-  <Importer>FontDescriptionImporter</Importer>
-  <ImporterTime>2020-08-10T18:17:54+02:00</ImporterTime>
-  <Processor>FontDescriptionProcessor</Processor>
-  <ProcessorTime>2020-08-10T18:17:54+02:00</ProcessorTime>
-  <Parameters>
-    <Key>PremultiplyAlpha</Key>
-    <Value>True</Value>
-  </Parameters>
-  <Parameters>
-    <Key>TextureFormat</Key>
-    <Value>Compressed</Value>
-  </Parameters>
-  <Dependencies />
-  <BuildAsset />
-  <BuildOutput />
-</PipelineBuildEvent>
+version https://git-lfs.github.com/spec/v1
+oid sha256:e68d5ecfe102904d744361d72afbbcc06799dfa6e1e27469b6c44f8ab132e1c1
+size 942
