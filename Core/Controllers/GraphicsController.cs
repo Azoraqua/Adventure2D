@@ -39,12 +39,18 @@ namespace Adventure2D.Core.Controllers
 
         public void Draw(Texture2D texture, Vector2 position)
         {
-            _spriteBatch.Draw(texture, position, Color.White);
+            var (x, y) = position;
+            var (tX, tY) = (texture.Width, texture.Height);
+            
+            _spriteBatch.Draw(texture, new Vector2(x - tX, y - tY), Color.White);
         }
 
         public void DrawText(SpriteFont font, string text, Vector2 position)
         {
-            _spriteBatch.DrawString(font, text, position, Color.White);
+            var (x, y) = position;
+            // var (mX, mY) = font.MeasureString(text);
+            
+            _spriteBatch.DrawString(font, text, new Vector2(x, y), Color.White);
         }
 
         public override void Update()
