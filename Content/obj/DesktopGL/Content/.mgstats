@@ -1,3 +1,1 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"D:/Development/Adventure2D/Content/Fonts/Game.spritefont","D:/Development/Adventure2D/Content/bin/DesktopGL/Content/Fonts/Game.xnb","FontDescriptionProcessor","SpriteFontContent",2028,37922,0,1613564
-"D:/Development/Adventure2D/Content/Textures/Entity/Player.png","D:/Development/Adventure2D/Content/bin/DesktopGL/Content/Textures/Entity/Player.xnb","TextureProcessor","Texture2DContent",132,1109,0,0070443
