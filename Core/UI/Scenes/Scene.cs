@@ -1,4 +1,7 @@
-﻿namespace Adventure2D.Core.Scenes
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace Adventure2D.Core.Scenes
 {
     public abstract class Scene
     {
@@ -16,8 +19,8 @@
             Name = name;
         }
 
-        public abstract void Update();
+        public abstract void Update(GameTime gameTime);
         
-        public abstract void Draw();
+        public abstract void Draw(SpriteBatch spriteBatch, GameTime gameTime);
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Adventure2D.Core.Controllers
+﻿using Microsoft.Xna.Framework;
+
+namespace Adventure2D.Core.Controllers
 {
     public abstract class Controller
     {
@@ -9,6 +11,6 @@
             Game = game;
         }
 
-        public abstract void Update();
+        public abstract void Update(GameTime gameTime);
     }
 }

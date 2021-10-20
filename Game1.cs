@@ -62,7 +62,7 @@ namespace Adventure2D
 
             // TODO: Handle generic key-presses.
 
-            GameController.Update();
+            GameController.Update(gameTime);
             // Player.Update(gameTime);
             // _camera.Update(gameTime);
 
@@ -73,7 +73,7 @@ namespace Adventure2D
         {
             // _spriteBatch.Begin(_camera);
             GraphicsController.Begin();
-            GraphicsController.Update();
+            GraphicsController.Update(gameTime);
             // Player.Draw(gameTime);
             GraphicsController.End();
             

@@ -53,7 +53,7 @@ namespace Adventure2D.Core.Controllers
             _spriteBatch.DrawString(font, text, new Vector2(x, y), Color.White);
         }
 
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
             if (CurrentScene == null)
             {
@@ -61,7 +61,7 @@ namespace Adventure2D.Core.Controllers
             }
 
             // Game.GraphicsDevice.Clear(Color.CornflowerBlue);
-            CurrentScene.Draw();
+            CurrentScene.Draw(_spriteBatch, gameTime);
         }
     }
 }

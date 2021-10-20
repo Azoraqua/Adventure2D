@@ -35,7 +35,7 @@ namespace Adventure2D.Core.Controllers
             return mState;
         }
 
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
             // GetKeyboard();
             // GetMouse();
