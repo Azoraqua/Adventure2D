@@ -61,6 +61,7 @@ namespace Adventure2D.Core.Controllers
             }
 
             // Game.GraphicsDevice.Clear(Color.CornflowerBlue);
+            CurrentScene.Update(gameTime);
             CurrentScene.Draw(_spriteBatch, gameTime);
         }
     }

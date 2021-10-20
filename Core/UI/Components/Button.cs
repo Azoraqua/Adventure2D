@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -9,6 +10,13 @@ namespace Adventure2D.Core.Components
         private readonly Texture2D _texture;
         private readonly Texture2D _textureFocused;
         private readonly SpriteFont _font;
+
+        #region Internals
+
+        private MouseState _prevMouseState;
+        private MouseState _currentMouseState;
+
+        #endregion
 
         #region Properties
 
@@ -22,6 +30,10 @@ namespace Adventure2D.Core.Components
 
         public bool IsFocused { get; private set; }
 
+        public event EventHandler Click;
+
+        public bool Clicked { get; private set; }
+
         #endregion
 
         public Button(Texture2D texture, Texture2D textureFocused, SpriteFont font)
@@ -33,28 +45,25 @@ namespace Adventure2D.Core.Components
 
         public void Update(GameTime gameTime)
         {
-            var mouse = Mouse.GetState();
-            var mouseRect = new Rectangle(mouse.X, mouse.Y, 1, 1);
+            _prevMouseState = _currentMouseState;
+            _currentMouseState = Mouse.GetState();
+            var mouseRect = new Rectangle(_currentMouseState.X, _currentMouseState.Y, 1, 1);
             var rect = new Rectangle((int) Position.X, (int) Position.Y, (int) Size.X, (int) Size.Y);
 
-            if (mouseRect.Intersects(rect))
-                IsFocused = true;
-            else
-                IsFocused = false;
+            IsFocused = mouseRect.Intersects(rect);
+
+            if (_currentMouseState.LeftButton == ButtonState.Released &&
+                _prevMouseState.LeftButton == ButtonState.Pressed)
+            {
+                Click?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             var rect = new Rectangle((int) Position.X, (int) Position.Y, (int) Size.X, (int) Size.Y);
 
-            if (IsFocused)
-            {
-                spriteBatch.Draw(_textureFocused, rect, Color.White);
-            }
-            else
-            {
-                spriteBatch.Draw(_texture, rect, Color.White);
-            }
+            spriteBatch.Draw(IsFocused ? _textureFocused : _texture, rect, Color.White);
 
             if (!string.IsNullOrEmpty(Text))
             {
