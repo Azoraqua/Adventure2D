@@ -67,6 +67,7 @@ namespace Adventure2D.Core.Components
             {
                 IsHovered = true;
                 // Hover?.Invoke(this, EventArgs.Empty);
+                // Hover(this, EventArgs.Empty);
 
                 if (_currentMouseState.LeftButton == ButtonState.Released &&
                     _prevMouseState.LeftButton == ButtonState.Pressed)
