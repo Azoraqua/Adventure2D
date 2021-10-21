@@ -8,7 +8,7 @@ namespace Adventure2D.Core.Components
     public class Button : IComponent
     {
         private readonly Texture2D _texture;
-        private readonly Texture2D _textureFocused;
+        private readonly Texture2D _textureHovered;
         private readonly SpriteFont _font;
 
         #region Internals
@@ -28,18 +28,20 @@ namespace Adventure2D.Core.Components
 
         public Color TextColor { get; set; }
 
-        public bool IsFocused { get; private set; }
+        public event EventHandler Hover;
+
+        public bool IsHovered { get; private set; }
 
         public event EventHandler Click;
 
-        public bool Clicked { get; private set; }
+        public bool IsClicked { get; private set; }
 
         #endregion
 
-        public Button(Texture2D texture, Texture2D textureFocused, SpriteFont font)
+        public Button(Texture2D texture, Texture2D textureHovered, SpriteFont font)
         {
             _texture = texture;
-            _textureFocused = textureFocused;
+            _textureHovered = textureHovered;
             _font = font;
         }
 
@@ -50,15 +52,18 @@ namespace Adventure2D.Core.Components
             var mouseRect = new Rectangle(_currentMouseState.X, _currentMouseState.Y, 1, 1);
             var rect = new Rectangle((int) Position.X, (int) Position.Y, (int) Size.X, (int) Size.Y);
 
-            IsFocused = false;
+            IsHovered = false;
+            IsClicked = false;
 
             if (mouseRect.Intersects(rect))
             {
-                IsFocused = true;
+                IsHovered = true;
+                // Hover?.Invoke(this, EventArgs.Empty);
 
                 if (_currentMouseState.LeftButton == ButtonState.Released &&
                     _prevMouseState.LeftButton == ButtonState.Pressed)
                 {
+                    IsClicked = true;
                     Click?.Invoke(this, EventArgs.Empty);
                 }
             }
@@ -68,25 +73,25 @@ namespace Adventure2D.Core.Components
         {
             var (sizeX, sizeY) = Size;
             var (posX, posY) = Position;
-            
+
             // Fix for misalignment when positioning.
-            posX -= sizeX / 2.0f; 
+            posX -= sizeX / 2.0f;
             posY -= sizeY / 2.0f;
 
             var rect = new Rectangle((int) posX, (int) posY, (int) sizeX, (int) sizeY);
 
             spriteBatch.Draw(
-                IsFocused ? _textureFocused : _texture,
+                IsHovered ? _textureHovered : _texture,
                 rect,
                 Color.White
             );
 
+            var textX = (rect.X + (rect.Width / 2) - (_font.MeasureString(Text).X / 2));
+            var textY = (rect.Y + (rect.Height / 2) - (_font.MeasureString(Text).Y / 2));
+
             if (!string.IsNullOrEmpty(Text))
             {
-                var x = (rect.X + (rect.Width / 2) - (_font.MeasureString(Text).X / 2));
-                var y = (rect.Y + (rect.Height / 2) - (_font.MeasureString(Text).Y / 2));
-            
-                spriteBatch.DrawString(_font, Text, new Vector2(x, y), TextColor);
+                spriteBatch.DrawString(_font, Text, new Vector2(textX, textY), TextColor);
             }
         }
     }

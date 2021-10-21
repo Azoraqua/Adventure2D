@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Loader;
 using Adventure2D.Core.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -14,9 +15,9 @@ namespace Adventure2D.Core.Scenes
         public MenuScene(Game1 game) : base(game, "Menu")
         {
             var texture = game.Content.Load<Texture2D>("Components/Button");
-            var textureFocused = game.Content.Load<Texture2D>("Components/ButtonFocused");
+            var textureHovered = game.Content.Load<Texture2D>("Components/ButtonHovered");
 
-            var button = new Button(texture, textureFocused, game.GameFont)
+            var button = new Button(texture, textureHovered, game.GameFont)
             {
                 Position = new Vector2(Game.Center.X, Game.Center.Y - 100),
                 Size = new Vector2(300, 100),
@@ -26,7 +27,7 @@ namespace Adventure2D.Core.Scenes
             button.Click += (sender, args) => game.GraphicsController.ChangeScene("Game");
             _components.Add(button);
 
-            button = new Button(texture, textureFocused, game.GameFont)
+            button = new Button(texture, textureHovered, game.GameFont)
             {
                 Position = new Vector2(Game.Center.X, Game.Center.Y),
                 Size = new Vector2(300, 100),
@@ -36,7 +37,7 @@ namespace Adventure2D.Core.Scenes
             button.Click += (sender, args) => game.GraphicsController.ChangeScene("Settings");
             _components.Add(button);
             
-            button = new Button(texture, textureFocused, game.GameFont)
+            button = new Button(texture, textureHovered, game.GameFont)
             {
                 Position = new Vector2(Game.Center.X, Game.Center.Y + 100),
                 Size = new Vector2(300, 100),

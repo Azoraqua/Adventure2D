@@ -35,7 +35,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Components/ButtonFocused.png
+/build:Components/ButtonFocused.png;Components/ButtonHovered.png
 
 #begin Fonts/Game.spritefont
 /importer:FontDescriptionImporter
