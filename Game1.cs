@@ -1,5 +1,4 @@
 ﻿using Adventure2D.Core.Controllers;
-using Adventure2D.Core.Entities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -8,6 +7,12 @@ namespace Adventure2D
 {
     public class Game1 : Game
     {
+        public Vector2 Center =>
+            new Vector2(
+                (float) (GraphicsDevice.Viewport.Width / 2.0),
+                (float) (GraphicsDevice.Viewport.Height / 2.0)
+            );
+        
         public readonly GraphicsDeviceManager Graphics;
         public GraphicsController GraphicsController;
         public GameController GameController;
@@ -20,11 +25,11 @@ namespace Adventure2D
             private set;
         }
 
-        public Player Player
-        {
-            get;
-            private set;
-        }
+        // public Player Player
+        // {
+        //     get;
+        //     private set;
+        // }
         
 
         public Game1()
@@ -42,7 +47,7 @@ namespace Adventure2D
             Graphics.PreferredBackBufferHeight = 720;
             Graphics.ApplyChanges();
 
-            Player = new Player(this);
+            // Player = new Player(this);
             // _camera = new Camera(GraphicsDevice);
 
             base.Initialize();
@@ -51,7 +56,7 @@ namespace Adventure2D
         protected override void LoadContent()
         {
             GameFont = Content.Load<SpriteFont>("Fonts/Game");
-            Player.LoadContent();
+            // Player.LoadContent();
             // _camera.LoadContent();
         }
 

@@ -50,26 +50,42 @@ namespace Adventure2D.Core.Components
             var mouseRect = new Rectangle(_currentMouseState.X, _currentMouseState.Y, 1, 1);
             var rect = new Rectangle((int) Position.X, (int) Position.Y, (int) Size.X, (int) Size.Y);
 
-            IsFocused = mouseRect.Intersects(rect);
+            IsFocused = false;
 
-            if (_currentMouseState.LeftButton == ButtonState.Released &&
-                _prevMouseState.LeftButton == ButtonState.Pressed)
+            if (mouseRect.Intersects(rect))
             {
-                Click?.Invoke(this, EventArgs.Empty);
+                IsFocused = true;
+
+                if (_currentMouseState.LeftButton == ButtonState.Released &&
+                    _prevMouseState.LeftButton == ButtonState.Pressed)
+                {
+                    Click?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            var rect = new Rectangle((int) Position.X, (int) Position.Y, (int) Size.X, (int) Size.Y);
+            var (sizeX, sizeY) = Size;
+            var (posX, posY) = Position;
+            
+            // Fix for misalignment when positioning.
+            posX -= sizeX / 2.0f; 
+            posY -= sizeY / 2.0f;
 
-            spriteBatch.Draw(IsFocused ? _textureFocused : _texture, rect, Color.White);
+            var rect = new Rectangle((int) posX, (int) posY, (int) sizeX, (int) sizeY);
+
+            spriteBatch.Draw(
+                IsFocused ? _textureFocused : _texture,
+                rect,
+                Color.White
+            );
 
             if (!string.IsNullOrEmpty(Text))
             {
                 var x = (rect.X + (rect.Width / 2) - (_font.MeasureString(Text).X / 2));
                 var y = (rect.Y + (rect.Height / 2) - (_font.MeasureString(Text).Y / 2));
-
+            
                 spriteBatch.DrawString(_font, Text, new Vector2(x, y), TextColor);
             }
         }

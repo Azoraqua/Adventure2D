@@ -18,7 +18,8 @@ namespace Adventure2D.Core.Controllers
             _scenes = new Dictionary<string, Scene>
             {
                 ["Menu"] = new MenuScene(Game),
-                ["Game"] = new GameScene(Game)
+                ["Game"] = new GameScene(Game),
+                ["Settings"] = new SettingsScene(Game)
             };
         }
 

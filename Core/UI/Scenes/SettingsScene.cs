@@ -3,9 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Adventure2D.Core.Scenes
 {
-    public class GameScene : Scene
+    public class SettingsScene : Scene
     {
-        public GameScene(Game1 game) : base(game, "Game")
+        public SettingsScene(Game1 game) : base(game, "Settings")
         {
         }
         
@@ -18,7 +18,7 @@ namespace Adventure2D.Core.Scenes
         {
             Game.GraphicsDevice.Clear(Color.Black);
             
-            const string text = "Game";
+            const string text = "Settings";
             var (x, y) = Game.GameFont.MeasureString(text);
             
             Game.GraphicsController.DrawText(Game.GameFont, text, new Vector2(Game.Center.X - x, Game.Center.Y - y));

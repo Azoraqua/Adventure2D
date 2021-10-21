@@ -18,8 +18,7 @@ namespace Adventure2D.Core.Scenes
 
             var button = new Button(texture, textureFocused, game.GameFont)
             {
-                Position = new Vector2((float) ((game.Graphics.PreferredBackBufferWidth / 2.0) - (texture.Width / 2.0)),
-                    (float) ((game.Graphics.PreferredBackBufferHeight / 2.0) - (texture.Height / 2.0)) - 100),
+                Position = new Vector2(Game.Center.X, Game.Center.Y - 100),
                 Size = new Vector2(300, 100),
                 Text = "Play",
                 TextColor = Color.Black
@@ -29,19 +28,17 @@ namespace Adventure2D.Core.Scenes
 
             button = new Button(texture, textureFocused, game.GameFont)
             {
-                Position = new Vector2((float) ((game.Graphics.PreferredBackBufferWidth / 2.0) - (texture.Width / 2.0)),
-                    (float) ((game.Graphics.PreferredBackBufferHeight / 2.0) - (texture.Height / 2.0))),
+                Position = new Vector2(Game.Center.X, Game.Center.Y),
                 Size = new Vector2(300, 100),
                 Text = "Settings",
                 TextColor = Color.Black
             };
             button.Click += (sender, args) => game.GraphicsController.ChangeScene("Settings");
             _components.Add(button);
-
+            
             button = new Button(texture, textureFocused, game.GameFont)
             {
-                Position = new Vector2((float) ((game.Graphics.PreferredBackBufferWidth / 2.0) - (texture.Width / 2.0)),
-                    (float) ((game.Graphics.PreferredBackBufferHeight / 2.0) - (texture.Height / 2.0)) + 100),
+                Position = new Vector2(Game.Center.X, Game.Center.Y + 100),
                 Size = new Vector2(300, 100),
                 Text = "Exit",
                 TextColor = Color.Black
