@@ -50,7 +50,15 @@ namespace Adventure2D.Core.Components
             _prevMouseState = _currentMouseState;
             _currentMouseState = Mouse.GetState();
             var mouseRect = new Rectangle(_currentMouseState.X, _currentMouseState.Y, 1, 1);
-            var rect = new Rectangle((int) Position.X, (int) Position.Y, (int) Size.X, (int) Size.Y);
+            
+            var (sizeX, sizeY) = Size;
+            var (posX, posY) = Position;
+
+            // Fix for misalignment when positioning.
+            posX -= sizeX / 2.0f;
+            posY -= sizeY / 2.0f;
+            
+            var rect = new Rectangle((int) posX, (int) posY, (int) sizeX, (int) sizeY);
 
             IsHovered = false;
             IsClicked = false;
