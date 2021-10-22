@@ -11,7 +11,15 @@ namespace Adventure2D.Core.Scenes
 
         public SettingsScene(Game1 game) : base(game, "Settings")
         {
-          
+            var sliderTexture = Game.Content.Load<Texture2D>("Components/Slider/Base");
+            var sliderLeftTexture = Game.Content.Load<Texture2D>("Components/Slider/ArrowLeft");
+            var sliderRightTexture = Game.Content.Load<Texture2D>("Components/Slider/ArrowRight");
+            
+            _components.Add(new Slider(sliderTexture, sliderLeftTexture, sliderRightTexture, Game.GameFont)
+            {
+                Position = Game.Center,
+                Size = new Vector2(800, 100)
+            });
         }
 
         public override void Update(GameTime time)
