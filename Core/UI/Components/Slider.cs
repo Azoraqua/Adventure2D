@@ -45,11 +45,15 @@ namespace Adventure2D.Core.Components
             
             var rect = new Rectangle((int) posX, (int) posY, (int) sizeX, (int) sizeY);
             
+            // Fix misalignment issues.
             spriteBatch.Draw(
                 _textureSlider,
                 rect,
                 Color.White
             );
+            
+            spriteBatch.Draw(_textureLeft, new Vector2(posX - (sizeX / 2.0f) - 100, posY), Color.White);
+            spriteBatch.Draw(_textureRight, new Vector2(posX + (sizeX / 2.0f) + 100, posY), Color.White);
         }
     }
 }
