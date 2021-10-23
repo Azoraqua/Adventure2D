@@ -62,9 +62,6 @@ namespace Adventure2D
 
         protected override void Update(GameTime gameTime)
         {
-            if (GameController.GetKeyboard().IsKeyDown(Keys.Escape))
-                Exit();
-
             // TODO: Handle generic key-presses.
 
             GameController.Update(gameTime);

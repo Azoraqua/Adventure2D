@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace Adventure2D.Core.Scenes
 {
@@ -11,7 +12,7 @@ namespace Adventure2D.Core.Scenes
         
         public override void Update(GameTime time)
         {
-            // TODO: Implement.
+           
         }
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
